@@ -14,10 +14,16 @@ const path = require('path');
 const fs = require('fs');
 
 
-const server  = http.createServer((req, res) =>{
-  console.log(req.url);
-  if(req.url === '/'){
-    res.end('<h1> home </h1>')
+const server = http.createServer((req, res) => {
+  // console.log(req.url);
+  if (req.url === '/api/users') {
+    const users = [
+      {name: "bodddddbo", age: 40},
+      {name: "boxssbo", age: 403},
+      {name: "bobwwwwwwo", age: 4033}
+    ];
+    res.writeHead(200, { 'Content-Type': 'application/json'});
+    res.end(JSON.stringify(users))
   }
 });
 const PORT = process.env.PORT || 5000;
